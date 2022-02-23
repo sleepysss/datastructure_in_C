@@ -25,7 +25,7 @@ int main()
 {
 	//queue:is an ordered list in which insertions and deletions take place at different place
 	int store[MAX_QUEUE_SIZE] = { 0 };
-	int front=-1,end=-1; //front:first element index;end:last element index
+	int front=-1,end=-1; //front:隊伍開頭的前一個 back:隊伍的最後一個
 	int choose, num;
 	for (;;)
 	{
