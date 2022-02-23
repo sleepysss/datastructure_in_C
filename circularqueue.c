@@ -25,7 +25,7 @@ int main()
 {
 	//circular queue 畫圖較好理解
 	int store[5];
-	//front:隊伍開頭的前一個的index back:隊伍的最後一個的index
+	//front:隊伍開頭的前一個的index back:隊伍的最後一個的index  index initial to 0,0 if -1,-1 then continue add the condition in line 7 wont hold
 
 	system("pause");
 	return 0;
