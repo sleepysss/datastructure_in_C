@@ -92,7 +92,7 @@ int findsmallest_rightsubtree_data(NODE *ptr)
 		
 }
 
-NODE* deletenode(NODE* root, int num)
+NODE* deletenode(NODE* root, int num)  //ddelete the number and return back new root
 {
 	if (!root)
 		return root;
