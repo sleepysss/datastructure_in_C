@@ -61,6 +61,25 @@ NODE *insertnode(NODE* root, int num)
 	return root; //after link,we shall return root back
 }
 
+//another version of insert node (by double pointer,so dont need to return address back)
+void insertnode(NODE **root, int num)
+{
+	if (!(*root))
+	{
+		NODE* ptr = (NODE*)malloc(sizeof(NODE));
+		ptr->data = num;
+		ptr->left = NULL;
+		ptr->right = NULL;
+	}
+	else
+	{
+		if ((*root)->data > num)
+			insertnode(&((*root)->left));
+		else
+			insertnode(&((*root)->right));
+	}
+}
+
 int findsmallest_rightsubtree_data(NODE *ptr)
 {
 	if (ptr->left)
