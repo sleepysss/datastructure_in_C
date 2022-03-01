@@ -11,6 +11,7 @@ struct List
 
 typedef struct List ListNode;
 
+//can use dummy_head
 
 void addNode(int num,ListNode **first) //change value store in pointer needs double pointer
 {
