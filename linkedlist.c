@@ -13,7 +13,7 @@ typedef struct List ListNode;
 
 //can use dummy_head than in add and delete , we dont need to pay attention on head
 
-void addNode(int num,ListNode **first) //change value store in pointer needs double pointer
+void addNode(int num,ListNode **first) //change value store in pointer needs double pointer  ** this function only add at bottom **
 {
 	ListNode* find=*first;
 	ListNode *ptr = (ListNode*)malloc(sizeof(ListNode));
