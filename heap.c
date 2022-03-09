@@ -19,28 +19,26 @@ void ReheapUp(int store[], int index)  //Reheap from down to up,after Reheap,arr
 	}
 }
 
-void ReheapDown(int store[], int index, int last) //Reheap from up to down,after Reheap,array will be a heap
+void ReheapDown(int nums[], int root, int last) //Reheap from up to down,after Reheap,array will be a heap
 {
-	int leftson = store[2 * index + 1], rightson = store[2 * index + 2], biggest = store[index], biggest_index = index, storevalue, flag = 0;
-	if (leftson > biggest&&last >= (2 * index + 1))
+	//是要「由上而下」地，以Max Heap的規則(root的數值「大於」兩個child的數值)，調整矩陣
+	int leftchild, rightchild, biggest_index = root;
+	if ((2 * root + 1) <= last) //leftchild exist
 	{
-		biggest = leftson;
-		biggest_index = 2 * index + 1;
-		flag = 1;
+		leftchild = 2 * root + 1;
+		biggest_index = nums[leftchild] > nums[biggest_index] ? leftchild : biggest_index;  //leftchild bigger than biggest or not
 	}
-	if (rightson > biggest&&last >= (2 * index + 2))
+	if ((2 * root + 2) <= last) //rightchild exist
 	{
-		biggest = rightson;
-		biggest_index = 2 * index + 2;
-		flag = 1;
+		rightchild = 2 * root + 2;
+		biggest_index = nums[rightchild] > nums[biggest_index] ? rightchild : biggest_index;
 	}
-	//exchange root with biggest if biggest isnt root
-	if (flag)
+	if (root != biggest_index)  //exchange
 	{
-		storevalue = store[index];
-		store[index] = biggest;
-		store[biggest_index] = storevalue;
-		ReheapDown(store, biggest_index, last);
+		int temp = nums[biggest_index];  //index(root)與index(largest)這兩個node互換位置，如此一來，當前的subtree必定能滿足Max Heap規則
+		nums[biggest_index] = nums[root];
+		nums[root] = temp;
+		ReheapDown(nums, biggest_index, last); //檢查新的subtree是否符合Max Heap規則
 	}
 }
 
@@ -52,9 +50,13 @@ void push(int store[], int num, int *last) //add an element to heap
 
 void pop(int store[], int *last) //delete root from heap       last:heap last element index
 {
+	//將root與最後加入的node交換。
+	//刪除被換到最下面的root node。
+	//將被換到最上面的node與其小孩比較，依情況交換，直到滿足Heap Tree的特性。
+	
 	printf("%d ", store[0]);
-	store[0] = store[(*last)--]; //最後一個取代被pop出去的那個
-	ReheapDown(store, 0, *last); //解決老鼠屎
+	store[0] = store[(*last)--]; //最後一個node移到root
+	ReheapDown(store, 0, *last); //解決老鼠屎(幫剛移上去的找新家)
 }
 
 void sorting_big2small(int store[], int *last)
@@ -68,6 +70,9 @@ void sorting_big2small(int store[], int *last)
 
 void BuildHeapFromArray(int store[], int last)
 {
+	//只要對所有「具有child的node」檢查一次MaxHeapify()，便能夠把一個任意矩陣調整成Max Heap
+	//為什麼只要對「具有child的node」調整呢？
+	//因為Max Heap的規則是「比較root的數值與child的數值」，如果是沒有child的node(屬於leaf node)，就一定不會違反Max Heap的規則。
 	for (int i = ((last - 1) / 2); i >= 0; --i)  //每個i當成root(當成一個subtree,並對他做ReheapDown),然後因為後面的index已滿足heap的特性,所以前面的index可以安心用ReheapDown,弄到最後面就能得到一個"正版"的heap
 		ReheapDown(store, i, last);            //且leaf這個subtree一定會滿足heap的特性
 
@@ -78,7 +83,8 @@ int main()
 {
 	//heap:
 	//(1)heap is complete or nearly complete binary tree , so it is usually implemented in an array structure
-	//(2)parents always bigger:MAXheap(smaller:MINheap) than both son
+	//(2)parents always bigger:MAXheap(smaller:MINheap) than both child
+	//(3)下標為i的節點的子節點是2i + 1與2i + 2；其父節點的下標是⌊floor((i − 1) ∕ 2)⌋
 
 	int num[10] = { 9,10,5,1,5,70,6,45,2,0 };
 	int last = 9;
