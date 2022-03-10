@@ -94,6 +94,7 @@ int main()
 	//(3)Collision就是兩筆資料存進同一個Table之slot的情形，這將會使得查詢資料失敗,解決的辦法有二
 	//Chaining：使用Linked list把「Hashing到同一個slot」的資料串起來。
 	//Open Addressing:使用Probing Method來尋找Table中「空的slot」存放資料。
+	//(4)若key不是int的話,可以先將key經過prehashing,再餵給hash function
 
 	struct HashNode* hashtable[55];   //store first node's address
 	for (int i = 0; i < 55; ++i)
