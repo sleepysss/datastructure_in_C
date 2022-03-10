@@ -93,7 +93,7 @@ int main()
 	//要達到這個目標，必須引入Hash Function，將Key對應到符合Table大小m的範圍內，index=h(Key)，即可成為Hash Table的index,ex:h(Key)=Key mod m ,Key就存在index h(Key)中
 	//(3)Collision就是兩筆資料存進同一個Table之slot的情形，這將會使得查詢資料失敗,解決的辦法有二
 	//Chaining：使用Linked list把「Hashing到同一個slot」的資料串起來。
-	//Open Addressing:使用Probing Method來尋找Table中「空的slot」存放資料。
+	//Open Addressing:使用Probing Method來尋找Table中「空的slot」存放資料。三種常見的Probing method：Linear Probing,Quadratic Probing,Double Hashing
 	//(4)若key不是int的話,可以先將key經過prehashing,再餵給hash function
 
 	struct HashNode* hashtable[55];   //store first node's address
