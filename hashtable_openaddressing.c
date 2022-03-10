@@ -46,6 +46,9 @@ void insertnode(int key, char name[], struct HashNode** hashtable)
 
 int main()
 {
+	//Probing就是「尋找下一格空的slot」，如果沒找到，就要繼續「往下找」，因此，Probing的精髓就是要製造出「往下找的順序」，
+	//這個順序盡可能越不規則越好，如此可確保Hash Function不會一直找到同一個slot
+	
 	struct HashNode* hashtable[20];   //store first node's address
 	for (int i = 0; i < 20; ++i)
 		hashtable[i] = NULL;
