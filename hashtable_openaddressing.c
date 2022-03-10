@@ -34,7 +34,7 @@ void insertnode(int key, char name[], struct HashNode** hashtable)
 	strcpy(node->name, name);
 	node->next = NULL;
 
-	for (int i = 0; i < 20; ++i) //iterative 一輪必定能找到空的(或者也可以用load factor來控制table的大小)
+	for (int i = 0; i < 20; ++i) //iterative 一輪必定能找到空的(或者也可以用load factor來控制table的大小)  第1個slot滿了，就找第2個slot；若第2個slot滿了，就找第3個slot，依此類推
 	{
 		if (!hashtable[(key % 20 + i) % 20])     //h(k,i)=(h'(k)+i) mod m  ex:k=7 m=8 ，h'(7)=7 (h'(k)=k mod m)，Probing Sequence為{7,0,1,2,3,4,5,6}
 		{
