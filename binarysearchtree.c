@@ -9,8 +9,8 @@ typedef struct node
 	struct node* right;
 }NODE;
 
-NODE* Q[100];
-int front = -1, back = -1;
+NODE* Q[100];  //queue
+int front = -1, back = -1;  //front:隊伍開頭的前一個的index back:隊伍的最後一個的index
 
 void addQ(NODE * ptr)
 {
@@ -92,7 +92,7 @@ int findsmallest_rightsubtree_data(NODE *ptr)
 		
 }
 
-NODE* deletenode(NODE* root, int num)  //ddelete the number and return back new root
+NODE* deletenode(NODE* root, int num)  //delete the number and return back new root
 {
 	if (!root)
 		return root;
@@ -102,13 +102,13 @@ NODE* deletenode(NODE* root, int num)  //ddelete the number and return back new 
 		{
 			NODE* ptr1 = root->left, *ptr2=root->right;
 			free(root);
-			return ptr1 ? ptr1 : ptr2;
+			return ptr1 ? ptr1 : ptr2; //return back new root(String it up directly)
 		}
-		else //two child
+		else //two child method:find successor(替身)
 		{
-			int x = findsmallest_rightsubtree_data(root->right);
-			root->right=deletenode(root->right, x); //cant root because it will be a cycle
-			root->data = x;
+			int x = findsmallest_rightsubtree_data(root->right); //get successor val
+			root->right=deletenode(root->right, x); //cant root because it will be a cycle    delete successor
+			root->data = x; //put successor val to root
 		}
 	}
 	else if (root->data > num)
@@ -155,9 +155,9 @@ void traverse_DFS_Inorder(NODE* root)  //left mid right
 
 int main()
 {
-	//  bst:    k
-	//         / \
-	//	   ALL<k  ALL>k
+	//  bst:     k
+	//         /  \
+	//	ALL<k  ALL>k
 
 	int choose,num;
 	NODE* root = NULL;
