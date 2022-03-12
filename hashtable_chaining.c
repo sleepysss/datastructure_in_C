@@ -96,7 +96,7 @@ int main()
 	//Open Addressing:使用Probing Method來尋找Table中「空的slot」存放資料。三種常見的Probing method：Linear Probing,Quadratic Probing,Double Hashing
 	//(4)Probing之Hash Function的定義域(domain)有兩個參數，一個是Key，另一個是Probing的「次數」
 	//(5)若key不是int的話,可以先將key經過prehashing,再餵給hash function
-	//(6) (Key)                   (hash value)         (store index)              即: h(input) % N
+	//(6) (Key)                   (hash value)         (store index)              即: h(input) % N    map the key to an int , map the int to a bucket
 	//    Joe -> (hash function) -> 4982       mod 5  =   3
 	//第(6)點這個步驟較為正確,hash function主要目的是把非數值的東西轉為數值
 	
