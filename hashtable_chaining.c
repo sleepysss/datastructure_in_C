@@ -88,7 +88,7 @@ void deletenode(int key, struct HashNode** hashtable)
 int main()
 {
 	//hash table
-	//(1)能夠在O(1)完成查詢
+	//(1)能夠在O(1)完成查詢,為by index的搜尋方式,透過hash function,把所有的key,轉成index(transform a key into a table index)
 	//(2)Hash Table希望能夠將存放資料的「Table」的大小(size)降到「真正會存放進Table的資料的數量」，也就是「有用到的Key的數量」,
 	//要達到這個目標，必須引入Hash Function，將Key對應到符合Table大小m的範圍內，index=h(Key)，即可成為Hash Table的index,ex:h(Key)=Key mod m ,Key就存在index h(Key)中
 	//(3)Collision就是兩筆資料存進同一個Table之slot的情形，這將會使得查詢資料失敗,解決的辦法有二
