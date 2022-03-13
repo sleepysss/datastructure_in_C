@@ -17,6 +17,7 @@
 // 若有序列第 j 個元素小於 pivot，則與第 i 個元素置換。
 // 第 i 個元素已落在小於 pivot 的範圍，將 i 指標往後移一個，處理下個元素。
 //3.疊代完成後，小於 pivot 的元素全都置換至序列前端，此時將 pivot 與第 i 個元素置換，pivot 會剛好在最終正確位置上（符合不等式）。
+//4.另外一種方法為Hoare partition scheme
 
 int Partition(int store[],int first, int last)
 {
