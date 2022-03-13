@@ -9,6 +9,15 @@
 // 3 5 8 i=1
 
 //in place ver.
+
+
+//為了達成上述條件，Quicksort 有許多不同的分割序列實作方案（partition scheme），其中以 Lomuto partition 最易理解，常被做為教材。
+//1.以序列最後一個元素當做 pivot。
+//2.利用兩個指標 i j，其中 j 從頭疊代整個序列
+// 若有序列第 j 個元素小於 pivot，則與第 i 個元素置換。
+// 第 i 個元素已落在小於 pivot 的範圍，將 i 指標往後移一個，處理下個元素。
+//3.疊代完成後，小於 pivot 的元素全都置換至序列前端，此時將 pivot 與第 i 個元素置換，pivot 會剛好在最終正確位置上（符合不等式）。
+
 int Partition(int store[],int first, int last)
 {
 	int pivot = store[last];
