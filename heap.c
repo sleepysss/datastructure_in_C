@@ -3,6 +3,8 @@
 
 //max heap
 
+//正統的heap sort見 sort部分的heapsort.c
+
 //reheap就是把heap中違規的那個傢伙(除了他以外,其他都正常),丟到他應該去的地方,來讓heap"恢復正常" (排除那一粒老鼠屎),過程有點像bubble sort的冒泡過程
 
 void ReheapUp(int store[], int index)  //Reheap from down to up,after Reheap,array will be a heap
