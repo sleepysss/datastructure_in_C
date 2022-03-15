@@ -26,7 +26,7 @@ int Partition(int store[],int first, int last)
 
 	for (int j = first; j < last; ++j) //traverse each element
 	{
-		if (pivot > store[j])    //過程類似找到小於pivot的數,就把他插到小於pivot的數所形成的數列的尾端
+		if (pivot > store[j])    //過程類似找到小於pivot的數,就把他插到小於pivot的數所形成的數列的尾端  
 		{
 			i++;
 			temp = store[i];
