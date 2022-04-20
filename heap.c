@@ -72,13 +72,14 @@ void sorting_big2small(int store[], int *last)
 
 void BuildHeapFromArray(int store[], int last)
 {
+	//此方法為 Floyd建堆算法
 	//只要對所有「具有child的node」檢查一次MaxHeapify()，便能夠把一個任意矩陣調整成Max Heap
 	//為什麼只要對「具有child的node」調整呢？
 	//因為Max Heap的規則是「比較root的數值與child的數值」，如果是沒有child的node(屬於leaf node)，就一定不會違反Max Heap的規則。
 	for (int i = ((last - 1) / 2); i >= 0; --i)  //每個i當成root(當成一個subtree,並對他做ReheapDown),然後因為後面的index已滿足heap的特性,所以前面的index可以安心用ReheapDown,弄到最後面就能得到一個"正版"的heap
 		ReheapDown(store, i, last);            //且leaf這個subtree一定會滿足heap的特性
 
-	//another method:start from i=0 and use ReheapUp  可想成把值一直加到heap中,最後得到"正版"的heap
+	//another method:start from i=0 and use ReheapUp  可想成把值一直加到heap中(逐個元素插入,然後對每個元素進行reheapUP),最後得到"正版"的heap
 }
 
 int main()
