@@ -4,7 +4,7 @@
 
 //maxheap: result will be small to big
 
-void reheapDown(int store[],int root,int last) //last:last index
+void reheapDown(int store[],int root,int last) //last:last index 
 {	
 	//找root,left_child,right_child三者中最大的且子節點要在有效範圍內
 	int biggestindex = root;
@@ -12,13 +12,13 @@ void reheapDown(int store[],int root,int last) //last:last index
 		biggestindex = 2 * root + 1;
 	if (2 * root + 2 <= last && store[2 * root + 2] > store[biggestindex])
 		biggestindex = 2 * root + 2;
-	//若有調整,則檢查新的subtree是否符合
+	//若有調整,則交換root和biggestindex(因為root必定為最大的by性質),並檢查新的subtree是否符合
 	if (biggestindex != root) 
 	{
 		int temp = store[root];
 		store[root] = store[biggestindex];
 		store[biggestindex] = temp;
-		reheapDown(store, biggestindex, last);
+		reheapDown(store, biggestindex, last);  //檢查新的subtree是否符合
 	}
 }
 
