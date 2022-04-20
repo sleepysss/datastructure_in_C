@@ -4,7 +4,7 @@
 
 //maxheap: result will be small to big
 
-void reheapDown(int store[],int root,int last) //last:last index 
+void reheapDown(int store[],int root,int last) //last:last index 大前提:root下面的都要符合heap特性
 {	
 	//找root,left_child,right_child三者中最大的且子節點要在有效範圍內
 	int biggestindex = root;
