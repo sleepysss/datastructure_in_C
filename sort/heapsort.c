@@ -38,7 +38,7 @@ void heapsort(int store[],int last)
 		int temp = store[0];         //把最前面的(最大)移到最後面,最後面的移到最前面
 		store[0] = store[last];  
 		store[last] = temp;
-		last--;                      //把array分為sor完和梅sort完兩部分
+		last--;                      //把array分為sort完和沒sort完兩部分
 		reheapDown(store, 0, last);  //調整最前面的到適當位置(可以這樣的原因為其他都是符合heap特性的)
 	}
 }
