@@ -41,7 +41,9 @@ void heapsort(int store[],int last)
 }
 
 int main()
-{
+{	
+	//heap滿足:(1)任意節點小於（或大於）它的所有後裔 (2)堆積總是一棵完全樹。即除了最底層，其他層的節點都被元素填滿，且最底層儘可能地從左到右填入。
+	
 	int store[SIZE] = { 3,5,1,-7,4,-666,-6,8,999,4 };
 	heapsort(store,SIZE-1);
 	for (int i = 0; i < SIZE; ++i)
