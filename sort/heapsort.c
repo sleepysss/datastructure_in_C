@@ -24,7 +24,7 @@ void reheapDown(int store[],int root,int last) //last:last index
 
 void BuildHeapFromArray(int store[],int last)
 {
-	//對所有「具有child的node」檢查一次，便能夠把一個任意矩陣調整成Max Heap
+	//對所有「具有child的node」檢查一次，便能夠把一個任意矩陣調整成Max Heap   the leaf nodes need not to be heapified as they already follow the heap property
 	for (int i = (last - 1) / 2; i >= 0; --i)
 		reheapDown(store, i, last);
 }
