@@ -15,7 +15,8 @@ ListNode *addNode(const int num,ListNode *head)
 	ListNode *newnode_ptr = (ListNode*)malloc(sizeof(ListNode)), * nextofnewnode_ptr=head, * lastofnewnode_ptr=head;
 	newnode_ptr->next = NULL;
 	newnode_ptr->num = num;
-
+	
+	//for empty list,head=NULL,so newnode_ptr->next = head can fit too
 	if (head==NULL || head->num > newnode_ptr->num ) //add at first or empty list
 	{
 		newnode_ptr->next = head;
