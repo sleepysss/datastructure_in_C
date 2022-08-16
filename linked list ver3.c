@@ -15,11 +15,11 @@ ListNode *addNode(const int num,ListNode *head)
 	ListNode *newnode_ptr = (ListNode*)malloc(sizeof(ListNode)), * nextofnewnode_ptr=head, * lastofnewnode_ptr=head;
 	newnode_ptr->next = NULL;
 	newnode_ptr->num = num;
-	
-	//for empty list,head=NULL,so newnode_ptr->next = head can fit too
+
+	//for empty list,head=NULL,so newnode_ptr->next = head can fit too 
 	if (head==NULL || head->num > newnode_ptr->num ) //add at first or empty list
 	{
-		newnode_ptr->next = head;
+		newnode_ptr->next = head;  //if we write add at empty list condition seperately ,we wont have this line
 		head = newnode_ptr;
 	}
 	else   //add at middle or last
@@ -32,7 +32,7 @@ ListNode *addNode(const int num,ListNode *head)
 			nextofnewnode_ptr = nextofnewnode_ptr->next;
 		}
 		//if the if condition does not fit , then nextofnewnode will be NULL and lastofnewnode will be the last node , this still work !
-		newnode_ptr->next = nextofnewnode_ptr;
+		newnode_ptr->next = nextofnewnode_ptr; //if we write add at last condition seperately ,we wont have this line
 		lastofnewnode_ptr->next = newnode_ptr;
 	}
 	return head;
@@ -40,7 +40,7 @@ ListNode *addNode(const int num,ListNode *head)
 
 ListNode *deleteNode(const int num,ListNode *head)
 {
-	//using dummy node,then we dont need to handle boundary condition
+	//using dummy node,then we dont need to handle boundary condition 
 	ListNode dummy;
 	ListNode *finddeletenode_ptr=&dummy, *lastofdeletenode_ptr=&dummy;
 	dummy.next = head;
