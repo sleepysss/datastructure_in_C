@@ -43,6 +43,7 @@ int search(NODE* root,int num)
 
 NODE *insertnode(NODE* root, int num)
 {
+	//if (sub)tree is empty , malloc a new node and return it's address
 	if (!root)
 	{
 		NODE* ptr = (NODE*)malloc(sizeof(NODE));
