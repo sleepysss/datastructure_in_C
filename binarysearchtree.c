@@ -70,6 +70,7 @@ void insertnode(NODE **root, int num)
 		ptr->data = num;
 		ptr->left = NULL;
 		ptr->right = NULL;
+		*root=ptr;
 	}
 	else
 	{
