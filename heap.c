@@ -80,7 +80,11 @@ void pop(int store[],int *last,int num) //delete arbitrary num from heap
     {
         store[index]=store[*last]; //change
         (*last)--; //delete
-        ReheapDown(store,index,last); 
+        
+        if(index>0&&store[index]>store[(index-1)/2]) //check greater than parent or not index>0:has parent
+            ReheapUp(store,index);        
+        else //check greater than son or not
+            ReheapDown(store,index,last); 
     }
 }
 
