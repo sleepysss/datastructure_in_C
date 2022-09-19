@@ -61,6 +61,29 @@ void pop(int store[], int *last) //delete root from heap       last:heap last el
 	ReheapDown(store, 0, *last); //解決老鼠屎(幫剛移上去的找新家)
 }
 
+void pop(int store[],int *last,int num) //delete arbitrary num from heap
+{
+    int index=-1; //delete num's index
+    //find num
+    for(int i=0;i<*last;++i)
+    {
+        if(store[i]==num)
+        {
+            index=i;
+            break;
+        }
+    }
+    
+    if(index==-1)
+        return;
+    else
+    {
+        store[index]=store[*last]; //change
+        (*last)--; //delete
+        ReheapDown(store,index,last); 
+    }
+}
+
 void sorting_big2small(int store[], int *last)
 {
 	for (int i = *last; i >= 0; --i)
