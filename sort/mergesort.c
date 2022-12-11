@@ -1,4 +1,4 @@
-//method 1 : top-down
+//method 1-1 : top-down
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -55,6 +55,58 @@ int main()
 	return 0;
 }
 
+//method 1-2 : top-down 
+
+//和1-1的差別為把1-2是把結果存到一array中,最後再抄回去,而不先把值分別給兩個sub array
+
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 11
+
+void merge(int nums[], int front_index, int end_index, int mid_index,int temp[])  
+{
+    //現在nums[]裡有[front, mid]和[mid+1, end]两个有序數組
+    int i=front_index,j=mid_index+1,index=0;
+    while(i<=mid_index&&j<=end_index)
+    {
+        if(nums[i]<nums[j])
+            temp[index++]=nums[i++];
+        else
+            temp[index++]=nums[j++];
+    }
+    while(i<=mid_index) //後半已traverse完
+        temp[index++]=nums[i++];
+    while(j<=end_index) //前半已traverse完
+        temp[index++]=nums[j++];
+        
+    for(i=front_index,index=0;i<=end_index;++i,++index) //寫回去
+        nums[i]=temp[index];
+}
+
+void mergesort(int nums[], int front_index, int end_index,int temp[])
+{
+	if (end_index > front_index) //用來卡是不是剩一個
+	{
+		int mid_index = (end_index + front_index) / 2;
+		mergesort(nums, front_index, mid_index,temp);                //divide (front~mid),會將nums中front_index~mid_index排好
+		mergesort(nums, mid_index + 1, end_index,temp);		//divide (mid+1~end),會將nums中mid+1~end排好
+		merge(nums, front_index, end_index, mid_index,temp);		//conquer(合體:將兩個subarray做比較,並合併出排序後的array)          
+	}
+}
+
+int main()
+{
+	//merge sort:將問題拆解為子問題,並逐一處理子問題後,將子問題的結果合併,來解決原來的問題
+    int temp[SIZE];
+	int store[SIZE] = { 3,5,999,-7,4,9,-6,888,10,83,99 };
+	mergesort(store,0,SIZE-1,temp); //呼叫這個代表會將nums[]0~9由小到大排好
+
+	for (int i = 0; i < SIZE; ++i)
+		printf("%d ", store[i]);
+	printf("\n");
+
+	return 0;
+}
 
 //method 2 : bottom-up
 
