@@ -3,8 +3,11 @@ void insertionsort(int store[],int size)
 	int key,j;
 	for (int i = 1; i < size; ++i) //目前要處理的資料,i之前的是已經排序(處理)過的資料,現在要把第i個資料插入前面那一坨中
 	{
-		key = store[i];  //目前要插的值
+		key = store[i];  //目前要插的值(這樣在while裡就不用swap了,可以直接蓋過)
 		j = i - 1;  //已排序的序列中目前檢查的index
+		
+		//下面的while成立代表檢查的比key還大,則檢查的往後移一格,再對前面的做同樣步驟
+		//若不成立代表檢查的比key還小,且因為前面是排好的,所以key插入檢查的後一格
 		while (j >= 0 && store[j] > key)  //由後向前看看新的要插在哪
 		{
 			store[j + 1] = store[j];  //往後移一格
